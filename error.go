@@ -69,6 +69,10 @@ type Error struct {
 // fmt.Errorf("%v"). The stacktrace will point to the line of code that
 // called New.
 func New(e interface{}) *Error {
+	if e == nil {
+		return nil
+	}
+
 	var err error
 
 	switch e := e.(type) {
